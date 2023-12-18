@@ -1,25 +1,9 @@
-crop_size = (
-    300,
-    300,
-)
+crop_size = (300, 300)
 data_preprocessor = dict(
     bgr_to_rgb=True,
-    mean=[
-        123.675,
-        116.28,
-        103.53,
-    ],
     pad_val=0,
     seg_pad_val=255,
-    size=(
-        300,
-        300,
-    ),
-    std=[
-        58.395,
-        57.12,
-        57.375,
-    ],
+    size=(300, 300),
     type="SegDataPreProcessor",
 )
 data_root = "/home/thiago/source/daedalus/luminar/datasets/with_masks/"
@@ -165,10 +149,7 @@ test_dataloader = dict(
             dict(type="LoadImageFromFile"),
             dict(
                 keep_ratio=True,
-                scale=(
-                    2048,
-                    1024,
-                ),
+                scale=(300, 300),
                 type="Resize",
             ),
             dict(type="LoadAnnotations"),
@@ -190,10 +171,7 @@ test_pipeline = [
     dict(type="LoadImageFromFile"),
     dict(
         keep_ratio=True,
-        scale=(
-            2048,
-            1024,
-        ),
+        scale=(300, 300),
         type="Resize",
     ),
     dict(type="LoadAnnotations"),
@@ -214,18 +192,12 @@ train_dataloader = dict(
                     0.5,
                     2.0,
                 ),
-                scale=(
-                    2048,
-                    1024,
-                ),
+                scale=(300, 300),
                 type="RandomResize",
             ),
             dict(
                 cat_max_ratio=0.75,
-                crop_size=(
-                    300,
-                    300,
-                ),
+                crop_size=(300, 300),
                 type="RandomCrop",
             ),
             dict(prob=0.5, type="RandomFlip"),
@@ -247,10 +219,7 @@ train_pipeline = [
             0.5,
             2.0,
         ),
-        scale=(
-            2048,
-            1024,
-        ),
+        scale=(300, 300),
         type="RandomResize",
     ),
     dict(
@@ -302,10 +271,7 @@ val_dataloader = dict(
             dict(type="LoadImageFromFile"),
             dict(
                 keep_ratio=True,
-                scale=(
-                    300,
-                    300,
-                ),
+                scale=(300, 300),
                 type="Resize",
             ),
             dict(type="LoadAnnotations"),
