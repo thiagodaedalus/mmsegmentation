@@ -1,7 +1,7 @@
 crop_size = (300, 300)
 data_preprocessor = dict(
     bgr_to_rgb=True,
-    pad_val=0,
+    pad_val=255,
     seg_pad_val=255,
     size=(300, 300),
     type="SegDataPreProcessor",
@@ -95,7 +95,7 @@ model = dict(
     ),
     data_preprocessor=dict(
         bgr_to_rgb=True,
-        pad_val=0,
+        pad_val=255,
         seg_pad_val=255,
         size=(
             300,
@@ -109,9 +109,10 @@ model = dict(
         concat_input=False,
         in_channels=128,
         in_index=-1,
+        out_channels=1,
         loss_decode=dict(loss_weight=1, type="CrossEntropyLoss", use_sigmoid=True),
         norm_cfg=dict(momentum=0.01, requires_grad=True, type="SyncBN"),
-        num_classes=19,
+        num_classes=2,
         type="DepthwiseSeparableFCNHead",
     ),
     test_cfg=dict(mode="whole"),
@@ -167,7 +168,7 @@ test_pipeline = [
     dict(type="LoadAnnotations"),
     dict(type="PackSegInputs"),
 ]
-train_cfg = dict(max_iters=100, type="IterBasedTrainLoop", val_interval=100)
+train_cfg = dict(max_iters=200, type="IterBasedTrainLoop", val_interval=100)
 train_dataloader = dict(
     batch_size=4,
     dataset=dict(
