@@ -95,22 +95,12 @@ model = dict(
     ),
     data_preprocessor=dict(
         bgr_to_rgb=True,
-        mean=[
-            123.675,
-            116.28,
-            103.53,
-        ],
         pad_val=0,
         seg_pad_val=255,
         size=(
             300,
             300,
         ),
-        std=[
-            58.395,
-            57.12,
-            57.375,
-        ],
         type="SegDataPreProcessor",
     ),
     decode_head=dict(
@@ -177,7 +167,7 @@ test_pipeline = [
     dict(type="LoadAnnotations"),
     dict(type="PackSegInputs"),
 ]
-train_cfg = dict(max_iters=10000, type="IterBasedTrainLoop", val_interval=10000)
+train_cfg = dict(max_iters=100, type="IterBasedTrainLoop", val_interval=100)
 train_dataloader = dict(
     batch_size=4,
     dataset=dict(

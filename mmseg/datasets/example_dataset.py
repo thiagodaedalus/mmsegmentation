@@ -6,7 +6,7 @@ from .basesegdataset import BaseSegDataset
 @DATASETS.register_module()
 class ExampleDataset(BaseSegDataset):
     METAINFO = dict(
-        classes=(["background", "road"]),
+        classes=(["road", "background"]),
         palette=[[0, 0, 0], [255, 255, 255]],
     )
 
