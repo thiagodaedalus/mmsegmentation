@@ -11,6 +11,7 @@ from .dataset_wrappers import MultiImageMixDataset
 from .decathlon import DecathlonDataset
 from .drive import DRIVEDataset
 from .dsdl import DSDLSegDataset
+from .example_dataset import ExampleDataset
 from .hrf import HRFDataset
 from .isaid import iSAIDDataset
 from .isprs import ISPRSDataset
@@ -25,7 +26,6 @@ from .potsdam import PotsdamDataset
 from .refuge import REFUGEDataset
 from .stare import STAREDataset
 from .synapse import SynapseDataset
-from .exampleDataset import ExampleDataset
 # yapf: disable
 from .transforms import (CLAHE, AdjustGamma, Albu, BioMedical3DPad,
                          BioMedical3DRandomCrop, BioMedical3DRandomFlip,
@@ -43,23 +43,64 @@ from .voc import PascalVOCDataset
 
 # yapf: enable
 __all__ = [
-    'BaseSegDataset', 'BioMedical3DRandomCrop', 'BioMedical3DRandomFlip',
-    'CityscapesDataset', 'PascalVOCDataset', 'ADE20KDataset',
-    'PascalContextDataset', 'PascalContextDataset59', 'ChaseDB1Dataset',
-    'DRIVEDataset', 'HRFDataset', 'STAREDataset', 'DarkZurichDataset',
-    'NightDrivingDataset', 'COCOStuffDataset', 'LoveDADataset',
-    'MultiImageMixDataset', 'iSAIDDataset', 'ISPRSDataset', 'PotsdamDataset',
-    'LoadAnnotations', 'RandomCrop', 'SegRescale', 'PhotoMetricDistortion',
-    'RandomRotate', 'AdjustGamma', 'CLAHE', 'Rerange', 'RGB2Gray',
-    'RandomCutOut', 'RandomMosaic', 'PackSegInputs', 'ResizeToMultiple',
-    'LoadImageFromNDArray', 'LoadBiomedicalImageFromFile',
-    'LoadBiomedicalAnnotation', 'LoadBiomedicalData', 'GenerateEdge',
-    'DecathlonDataset', 'LIPDataset', 'ResizeShortestEdge',
-    'BioMedicalGaussianNoise', 'BioMedicalGaussianBlur',
-    'BioMedicalRandomGamma', 'BioMedical3DPad', 'RandomRotFlip',
-    'SynapseDataset', 'REFUGEDataset', 'MapillaryDataset_v1',
-    'MapillaryDataset_v2', 'Albu', 'LEVIRCDDataset',
-    'LoadMultipleRSImageFromFile', 'LoadSingleRSImageFromFile',
-    'ConcatCDInput', 'BaseCDDataset', 'DSDLSegDataset', 'BDD100KDataset',
-    'NYUDataset', 'ExampleDataset'
+    "BaseSegDataset",
+    "BioMedical3DRandomCrop",
+    "BioMedical3DRandomFlip",
+    "CityscapesDataset",
+    "PascalVOCDataset",
+    "ADE20KDataset",
+    "PascalContextDataset",
+    "PascalContextDataset59",
+    "ChaseDB1Dataset",
+    "DRIVEDataset",
+    "HRFDataset",
+    "STAREDataset",
+    "DarkZurichDataset",
+    "NightDrivingDataset",
+    "COCOStuffDataset",
+    "LoveDADataset",
+    "MultiImageMixDataset",
+    "iSAIDDataset",
+    "ISPRSDataset",
+    "PotsdamDataset",
+    "LoadAnnotations",
+    "RandomCrop",
+    "SegRescale",
+    "PhotoMetricDistortion",
+    "RandomRotate",
+    "AdjustGamma",
+    "CLAHE",
+    "Rerange",
+    "RGB2Gray",
+    "RandomCutOut",
+    "RandomMosaic",
+    "PackSegInputs",
+    "ResizeToMultiple",
+    "LoadImageFromNDArray",
+    "LoadBiomedicalImageFromFile",
+    "LoadBiomedicalAnnotation",
+    "LoadBiomedicalData",
+    "GenerateEdge",
+    "DecathlonDataset",
+    "LIPDataset",
+    "ResizeShortestEdge",
+    "BioMedicalGaussianNoise",
+    "BioMedicalGaussianBlur",
+    "BioMedicalRandomGamma",
+    "BioMedical3DPad",
+    "RandomRotFlip",
+    "SynapseDataset",
+    "REFUGEDataset",
+    "MapillaryDataset_v1",
+    "MapillaryDataset_v2",
+    "Albu",
+    "LEVIRCDDataset",
+    "LoadMultipleRSImageFromFile",
+    "LoadSingleRSImageFromFile",
+    "ConcatCDInput",
+    "BaseCDDataset",
+    "DSDLSegDataset",
+    "BDD100KDataset",
+    "NYUDataset",
+    "ExampleDataset",
 ]
