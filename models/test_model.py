@@ -45,7 +45,7 @@ model = dict(
                 loss_weight=0.4, type="CrossEntropyLoss", use_sigmoid=True
             ),
             norm_cfg=dict(momentum=0.01, requires_grad=True, type="SyncBN"),
-            num_classes=19,
+            num_classes=2,
             num_convs=1,
             type="FCNHead",
         ),
@@ -59,7 +59,7 @@ model = dict(
                 loss_weight=0.4, type="CrossEntropyLoss", use_sigmoid=True
             ),
             norm_cfg=dict(momentum=0.01, requires_grad=True, type="SyncBN"),
-            num_classes=19,
+            num_classes=2,
             num_convs=1,
             type="FCNHead",
         ),
@@ -97,10 +97,7 @@ model = dict(
         bgr_to_rgb=True,
         pad_val=255,
         seg_pad_val=255,
-        size=(
-            300,
-            300,
-        ),
+        size=(300, 300),
         type="SegDataPreProcessor",
     ),
     decode_head=dict(
