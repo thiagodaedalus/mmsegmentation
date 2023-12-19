@@ -8,7 +8,7 @@ data_preprocessor = dict(
     type="SegDataPreProcessor",
 )
 
-data_root = "/home/thiago/source/daedalus/luminar/datasets/with_masks/"
+data_root = "/home/thiago/source/daedalus/luminar/datasets/road_segmentation/church_slanted_bev_imgs_down_thiago"
 dataset_type = "ExampleDataset"
 
 default_hooks = dict(
