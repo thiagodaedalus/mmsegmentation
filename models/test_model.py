@@ -1,4 +1,5 @@
 crop_size = (300, 300)
+
 data_preprocessor = dict(
     bgr_to_rgb=True,
     pad_val=255,
@@ -6,8 +7,10 @@ data_preprocessor = dict(
     size=(300, 300),
     type="SegDataPreProcessor",
 )
+
 data_root = "/home/thiago/source/daedalus/luminar/datasets/with_masks/"
 dataset_type = "ExampleDataset"
+
 default_hooks = dict(
     checkpoint=dict(by_epoch=False, interval=100, type="CheckpointHook"),
     logger=dict(interval=50, log_metric_by_epoch=False, type="LoggerHook"),
@@ -22,17 +25,11 @@ env_cfg = dict(
     dist_cfg=dict(backend="nccl"),
     mp_cfg=dict(mp_start_method="fork", opencv_num_threads=0),
 )
-img_ratios = [
-    0.5,
-    0.75,
-    1.0,
-    1.25,
-    1.5,
-    1.75,
-]
+img_ratios = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75]
 load_from = None
 log_level = "INFO"
 log_processor = dict(by_epoch=False)
+
 model = dict(
     auxiliary_head=[
         dict(
@@ -116,6 +113,7 @@ model = dict(
     train_cfg=dict(),
     type="EncoderDecoder",
 )
+
 norm_cfg = dict(momentum=0.01, requires_grad=True, type="SyncBN")
 optim_wrapper = dict(
     clip_grad=None,
@@ -126,51 +124,14 @@ optimizer = dict(lr=0.12, momentum=0.9, type="SGD", weight_decay=4e-05)
 param_scheduler = [
     dict(begin=0, by_epoch=False, end=10000, eta_min=0.0001, power=0.9, type="PolyLR"),
 ]
+
 resume = False
-test_cfg = dict(type="TestLoop")
-test_dataloader = dict(
-    batch_size=1,
-    dataset=dict(
-        data_prefix=dict(img_path="images", seg_map_path="masks"),
-        data_root="/home/thiago/source/daedalus/luminar/datasets/with_masks/",
-        pipeline=[
-            dict(type="LoadImageFromFile"),
-            dict(
-                keep_ratio=True,
-                scale=(300, 300),
-                type="Resize",
-            ),
-            dict(type="LoadAnnotations"),
-            dict(type="PackSegInputs"),
-        ],
-        type="ExampleDataset",
-    ),
-    num_workers=4,
-    persistent_workers=True,
-    sampler=dict(shuffle=False, type="DefaultSampler"),
-)
-test_evaluator = dict(
-    iou_metrics=[
-        "mIoU",
-    ],
-    type="IoUMetric",
-)
-test_pipeline = [
-    dict(type="LoadImageFromFile"),
-    dict(
-        keep_ratio=True,
-        scale=(300, 300),
-        type="Resize",
-    ),
-    dict(type="LoadAnnotations"),
-    dict(type="PackSegInputs"),
-]
 train_cfg = dict(max_iters=200, type="IterBasedTrainLoop", val_interval=100)
 train_dataloader = dict(
     batch_size=4,
     dataset=dict(
         data_prefix=dict(img_path="images", seg_map_path="masks"),
-        data_root="/home/thiago/source/daedalus/luminar/datasets/with_masks/",
+        data_root=data_root,
         pipeline=[
             dict(type="LoadImageFromFile"),
             dict(type="LoadAnnotations"),
@@ -222,6 +183,46 @@ train_pipeline = [
     dict(type="PhotoMetricDistortion"),
     dict(type="PackSegInputs"),
 ]
+
+test_cfg = dict(type="TestLoop")
+test_dataloader = dict(
+    batch_size=1,
+    dataset=dict(
+        data_prefix=dict(img_path="images", seg_map_path="masks"),
+        data_root=data_root,
+        pipeline=[
+            dict(type="LoadImageFromFile"),
+            dict(
+                keep_ratio=True,
+                scale=(300, 300),
+                type="Resize",
+            ),
+            dict(type="LoadAnnotations"),
+            dict(type="PackSegInputs"),
+        ],
+        type="ExampleDataset",
+    ),
+    num_workers=4,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type="DefaultSampler"),
+)
+test_evaluator = dict(
+    iou_metrics=[
+        "mIoU",
+    ],
+    type="IoUMetric",
+)
+test_pipeline = [
+    dict(type="LoadImageFromFile"),
+    dict(
+        keep_ratio=True,
+        scale=(300, 300),
+        type="Resize",
+    ),
+    dict(type="LoadAnnotations"),
+    dict(type="PackSegInputs"),
+]
+
 tta_model = dict(type="SegTTAModel")
 tta_pipeline = [
     dict(backend_args=None, type="LoadImageFromFile"),
@@ -249,12 +250,13 @@ tta_pipeline = [
         type="TestTimeAug",
     ),
 ]
+
 val_cfg = dict(type="ValLoop")
 val_dataloader = dict(
     batch_size=1,
     dataset=dict(
         data_prefix=dict(img_path="images", seg_map_path="masks"),
-        data_root="/home/thiago/source/daedalus/luminar/datasets/with_masks/",
+        data_root=data_root,
         pipeline=[
             dict(type="LoadImageFromFile"),
             dict(
