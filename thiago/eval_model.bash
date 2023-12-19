@@ -11,7 +11,8 @@ EVAL_SCRIPT="${REPOSITORY_ROOT}/demo/image_demo.py"
 
 # customize this, if necessary
 EVAL_IMAGE="/home/thiago/source/daedalus/luminar/datasets/with_masks/images/0a285f89-i_240_int_img.png"
-MODEL_SCRIPT="${REPOSITORY_ROOT}/models/test_model.py"
+MODEL_NAME="${MODEL_NAME:-test_model}"
+MODEL_SCRIPT="${REPOSITORY_ROOT}/models/${MODEL_NAME}.py"
 MODEL_WEIGHTS="$(cat ${REPOSITORY_ROOT}/work_dirs/last_checkpoint)"
 
 python \
