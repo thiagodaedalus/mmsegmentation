@@ -6,8 +6,8 @@ from .basesegdataset import BaseSegDataset
 @DATASETS.register_module()
 class ExampleDataset(BaseSegDataset):
     METAINFO = dict(
-        classes=(["road", "background"]),
-        palette=[[0, 0, 0], [255, 255, 255]],
+        classes=(["road", "roadside"]),
+        palette=[[187, 158, 255], [255, 163, 158]],
     )
 
     def __init__(self, img_suffix=".png", seg_map_suffix=".png", **kwargs) -> None:

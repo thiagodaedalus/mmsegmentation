@@ -10,10 +10,10 @@ REPOSITORY_ROOT="$(realpath "$SCRIPT_DIR"/..)"
 EVAL_SCRIPT="${REPOSITORY_ROOT}/demo/image_demo.py"
 
 # customize this, if necessary
-EVAL_IMAGE="/home/thiago/source/daedalus/luminar/datasets/with_masks/images/0a285f89-i_240_int_img.png"
+EVAL_IMAGE="/home/thiago/source/daedalus/luminar/datasets/road_segmentation/with_masks/subset-0123/images/742.png"
 MODEL_NAME="${MODEL_NAME:-test_model}"
 MODEL_SCRIPT="${REPOSITORY_ROOT}/models/${MODEL_NAME}.py"
-MODEL_WEIGHTS="$(cat ${REPOSITORY_ROOT}/work_dirs/last_checkpoint)"
+MODEL_WEIGHTS="$(cat ${REPOSITORY_ROOT}/work_dirs/test_model/last_checkpoint)"
 
 python \
     "$EVAL_SCRIPT" \
@@ -21,4 +21,4 @@ python \
     "$MODEL_SCRIPT" \
     "$MODEL_WEIGHTS" \
     --device cuda:0 \
-    --opacity 1
+    --opacity 0.75

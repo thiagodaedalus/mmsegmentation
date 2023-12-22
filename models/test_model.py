@@ -8,7 +8,7 @@ data_preprocessor = dict(
     type="SegDataPreProcessor",
 )
 
-data_root = "/home/thiago/source/daedalus/luminar/datasets/road_segmentation/church_slanted_bev_imgs_down_thiago"
+data_root = "/home/thiago/source/daedalus/luminar/datasets/road_segmentation/tmp"
 dataset_type = "ExampleDataset"
 
 default_hooks = dict(
@@ -126,7 +126,7 @@ param_scheduler = [
 ]
 
 resume = False
-train_cfg = dict(max_iters=200, type="IterBasedTrainLoop", val_interval=100)
+train_cfg = dict(max_iters=20000, type="IterBasedTrainLoop", val_interval=100)
 train_dataloader = dict(
     batch_size=4,
     dataset=dict(
